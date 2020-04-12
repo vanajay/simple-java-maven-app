@@ -32,19 +32,7 @@ pipeline {
             }
         }
 
-        stage('Install Docker') {
-        when {
-                branch 'master'
-              }
-        steps {
-               sh ' docker run -d \
-                    --name my-jenkins \
-                    -v /var/jenkins_home:~/.jenkins \
-                    -v /var/run/docker.sock:/var/run/docker.sock \
-                    -p 8080:8080 jenkins'
-               }
 
-        }
         stage('Build Docker Image') {
                             when {
                                 branch 'master'
