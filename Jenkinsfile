@@ -36,6 +36,13 @@ pipeline {
                                 branch 'master'
                             }
                             steps {
+                                sh ' docker run -d \
+                                       --name my-jenkins \
+                                       -v /var/jenkins_home:~/.jenkins \
+                                       -v /var/run/docker.sock:/var/run/docker.sock \
+                                       -p 8080:8080 jenkins'
+                            }
+                            steps {
                                 echo '=== Building simple-java-maven-app Docker Image ==='
                                 script {
                                     app = docker.build("rpidugu/simple-java-maven-app")
