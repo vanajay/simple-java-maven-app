@@ -5,6 +5,10 @@ pipeline {
             args '-v /root/.m2:/root/.m2'
         }
     }
+    environment {
+        GITHUB = credentials('gitHubCredentials')
+
+    }
     stages {
         stage('Build') {
             steps {
