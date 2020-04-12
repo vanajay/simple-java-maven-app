@@ -65,5 +65,5 @@ pipeline {
                                 sh("docker rmi -f rpidugu/simple-java-maven-app:$SHORT_COMMIT || :")
                 }
             }
-
+    }
 }
