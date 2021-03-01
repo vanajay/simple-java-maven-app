@@ -39,7 +39,7 @@ pipeline {
                             steps {
                                 echo '=== Building simple-java-maven-app Docker Image ==='
                                 script {
-                                    app = docker.build("rpidugu/simple-java-maven-app")
+                                    app = docker.build("vanajay/simple-java-maven-app")
                                 }
                             }
                 }
