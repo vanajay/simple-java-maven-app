@@ -30,6 +30,13 @@ stages {
    steps {
     sh './jenkins/scripts/deliver.sh'
    }
+     post{
+         always{
+              s3Upload consoleLogLevel: 'INFO', dontSetBuildResultOnFailure: false, dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'myjavaapps3', excludedFile: '', flatten: true, gzipFiles: false, keepForever: true, managedArtifacts: true, noUploadOnFailure: true, selectedRegion: 'us-east-1', showDirectlyInBrowser: true, sourceFile: 'target', storageClass: 'STANDARD', uploadFromSlave: false, useServerSideEncryption: false]], pluginFailureResultConstraint: 'FAILURE', profileName: 'devops-jenkins81', userMetadata: [
+         }
+     
+     }
+     
   }
 }
 }
