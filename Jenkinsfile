@@ -33,6 +33,12 @@ stages {
     
      
   }
+    stage('updload to s3'){
+    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AKIAZMBOBHYWPSE7BTUO', credentialsId: 'deploytos3', secretKeyVariable: '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']]) {
+    // some block
+}
+    
+    }
    
     
     
