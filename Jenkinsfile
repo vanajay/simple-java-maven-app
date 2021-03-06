@@ -36,6 +36,11 @@ stages {
     stage('updload to s3'){
         steps {
           withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AKIAZMBOBHYWPSE7BTUO', credentialsId: 'deploytos3', secretKeyVariable: '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']]) {
+          
+          sh 'curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"'
+          sh 'unzip awscliv2.zip'
+          sh 'sudo ./aws/install'
+              
           sh 'aws s3 ls'
               
         }
