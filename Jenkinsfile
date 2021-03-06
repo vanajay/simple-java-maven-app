@@ -33,5 +33,25 @@ stages {
     
      
   }
+    stage("publish to s3") {
+    step([
+        $class: 'S3BucketPublisher',
+        entries: [[
+            sourceFile: 'target/*.jar',
+            bucket: 'myjavaapps3',
+            selectedRegion: 'us-east-1',
+            noUploadOnFailure: true,
+            managedArtifacts: true,
+            flatten: true,
+            showDirectlyInBrowser: true,
+            keepForever: true,
+        ]],
+        profileName: 'myprofile',
+        dontWaitForConcurrentBuildCompletion: false, 
+    ])
+}
+
+    
+    
 }
 }
